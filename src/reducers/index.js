@@ -1,10 +1,10 @@
-export const pingReducer = (state = { isPinging: false }, action) => {
+export const pingReducer = (state = { isPinging: false, user: null }, action) => {
     switch (action.type) {
-        case 'PING':
-            return { isPinging: true }
+        case 'FETCH_USER':
+            return { ...state, isPinging: true }
 
-        case 'PONG':
-            return { isPinging: false }
+        case 'FETCH_USER_FULFILLED':
+            return { ...state, isPinging: false, user: action.payload }
 
         default:
             return state;
